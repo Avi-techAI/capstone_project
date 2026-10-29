@@ -2,7 +2,7 @@
 
 **Cohort:** IMP-PCMLAI-26-06 | **Student:** Avi Thakur
 **Course:** Imperial College London Professional Certificate in ML and AI
-**Status of this file:** Week 4 inputs are proposed only. They have not been submitted yet. Fill in the outputs table after the portal replies.
+**Status of this file:** Week 4 inputs were submitted and the outputs are recorded in section 8. Week 5 is in Week_5_Progress.md.
 
 ---
 
@@ -117,15 +117,15 @@ F2 and F3 are noisy, so a single output can look better or worse than it really 
 5. For F4 and F8, think about one exploration week, since the safe gains are now very small.
 6. Keep one file per week (Week_5_Progress.md next) with the same sections.
 
-## 8. Week 4 outputs (fill in after the portal replies)
+## 8. Week 4 outputs
 
 | Function | Output received | Better than best so far? | New best |
 |---|---|---|---|
-| F1 | | | |
-| F2 | | | |
-| F3 | | | |
-| F4 | | | |
-| F5 | | | |
-| F6 | | | |
-| F7 | | | |
-| F8 | | | |
+| F1 | 5.66e-06 | Yes, about 15,000 times higher | 5.66e-06 |
+| F2 | 0.5261 | No, but F2 is noisy | 0.6965 (W1) |
+| F3 | -0.0206 | No, but better than Week 3 | -0.0166 (W2) |
+| F4 | 0.3837 | No, down 0.17 | 0.5540 (W3) |
+| F5 | 4440.81 | No, same as best within 0.05% | 4443.11 (W3) |
+| F6 | -0.4142 | Yes, small gain | -0.4142 |
+| F7 | 2.0818 | Yes, up about 36% | 2.0818 |
+| F8 | 9.9453 | Yes, very small gain | 9.9453 |
