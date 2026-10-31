@@ -40,7 +40,7 @@ Five of eight functions set a new best in Week 3 (F1, F4, F5, F6, F8). Three did
 
 **F2.** I found something important here. The initial data and my Week 1 submission are the exact same point (0.702637-0.926564), but they gave different outputs: 0.6112 and 0.6965. So F2 is noisy, by about 0.05 or more. This means the Week 3 result of 0.5961 is not clearly worse than the best. The model now says x1 near 0.70 matters a lot and x2 hardly matters at all (length scale for x2 hit the upper limit of 3.0).
 
-**F3.** Going further along the Week 2 trend made things worse (-0.0376). So the peak is between the Week 1 and Week 2 points, or just around the Week 2 point. The model says x3 is the most sensitive input (length scale 0.09) and x1 barely matters. The Week 1 point also has a repeat in the initial data (-0.0334 and -0.0348), so F3 has a small amount of noise too, but much less than the Week 3 drop.
+**F3.** Going further along the Week 2 trend made things worse (-0.0376). So the peak is between the Week 1 and Week 2 points, or just around the Week 2 point. The model says x3 is the most sensitive input (length scale 0.09) and x1 barely matters. The Week 1 point also has a repeat in the initial data (-0.0334 and -0.0348), so F3 has a small amount of noise too, but much less than the Week-3 drop.
 
 **F4.** Another clear gain. The model is still very reliable (leave one out Spearman 0.98) and the exploit point is only 0.01 away from the Week 3 point. That tells me we are now very close to the top of this function.
 
