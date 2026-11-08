@@ -1,12 +1,12 @@
 # Black Box Capstone: Week 1 Progress
 
-**Cohort:** IMP-PCMLAI-26-06 | **Student:** Avi Thakur
+**Cohort:** IMP-PCMLAI-26-06 | **Student:** Avdhesh Thakur
 **Course:** Imperial College London Professional Certificate in ML and AI
-**Status of this file:** Week 1 inputs were submitted and the outputs are in section 8.
+**Status:** I submitted my Week 1 inputs and recorded the outputs in section 8.
 
 ---
 
-## 1. Starting point
+## 1. The starting data I was given
 
 There are eight black box functions. Each one takes between 2 and 8 inputs, each between 0 and 1, and returns one number. The goal is to make every output as high as possible by Week 13. I can send one input per function each week.
 
@@ -23,13 +23,13 @@ The course gave me some starting data for each function.
 | F7 | 6 | 30 | 1.3650 |
 | F8 | 8 | 40 | 9.5985 |
 
-## 2. Method used for Week 1
+## 2. How I chose the Week 1 inputs
 
 For Week 1 I did not run Bayesian Optimisation yet. I looked at the starting data for each function and picked the input that gave the highest output. Then I sent that same input to the portal.
 
 I did this for two reasons. First, it gives me a confirmed starting point from the portal itself. Second, it shows whether the portal gives the same answer for the same input, which tells me if the functions are noisy.
 
-## 3. What the starting data shows for each function
+## 3. What I learned from the starting data
 
 **F1.** Nearly every output is almost exactly zero, from about 1e-124 up to 1e-16. The only clear value is negative (-3.6e-03 at 0.650-0.682). There is very little signal to work with.
 
@@ -47,9 +47,9 @@ I did this for two reasons. First, it gives me a confirmed starting point from t
 
 **F8.** Outputs go from about 5.6 up to 9.6. This looks like a smooth function.
 
-## 4. Week 1 inputs
+## 4. My Week 1 inputs
 
-| Function | Dim | Input submitted | Style |
+| Function | Dim | My input | Style |
 |---|---|---|---|
 | F1 | 2 | `0.731024-0.733000` | Baseline |
 | F2 | 2 | `0.702637-0.926564` | Baseline |
@@ -62,18 +62,18 @@ I did this for two reasons. First, it gives me a confirmed starting point from t
 
 Every input is the best point from the starting data, so there is no separate reasoning for each function this week.
 
-## 5. Honest limits
+## 5. What I am not sure about
 
 This week does not try to improve anything. It only confirms where I start. The real search starts in Week 2.
 
-## 6. Next steps
+## 6. My next steps
 
-1. Fill in the outputs table when the portal replies.
-2. Fit a Gaussian Process for each function on the starting data plus the Week 1 result.
-3. Use Expected Improvement to choose the Week 2 inputs.
-4. Keep one file per week (Week_2_Progress.md next) with the same sections.
+1. I will record the outputs in section 8 when the portal replies.
+2. I will fit a Gaussian Process for each function on the starting data plus the Week 1 result.
+3. I will use Expected Improvement to choose my Week 2 inputs.
+4. I will keep one file per week (Week_2_Progress.md next) with the same sections.
 
-## 7. Notes added later
+## 7. Notes I added later
 
 The Week 1 results turned out to be useful in a way I did not expect. For F2, the same input gave 0.6112 in the starting data and 0.6965 from the portal. That means F2 is noisy. F3 and F6 also came back slightly different from the starting data. I only noticed this properly in Week 4, and it changed how I treat F2.
 
