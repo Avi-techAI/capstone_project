@@ -1,12 +1,12 @@
 # Black Box Capstone: Week 2 Progress
 
-**Cohort:** IMP-PCMLAI-26-06 | **Student:** Avi Thakur
+**Cohort:** IMP-PCMLAI-26-06 | **Student:** Avdhesh Thakur
 **Course:** Imperial College London Professional Certificate in ML and AI
-**Status of this file:** Week 2 inputs were submitted and the outputs are in section 8.
+**Status:** I submitted my Week 2 inputs and recorded the outputs in section 8.
 
 ---
 
-## 1. What was submitted so far
+## 1. What I submitted so far
 
 | Function | Dim | Week 1 input |
 |---|---|---|
@@ -19,7 +19,7 @@
 | F7 | 6 | `0.057896-0.491672-0.247422-0.218118-0.420428-0.730970` |
 | F8 | 8 | `0.056447-0.065956-0.022929-0.038786-0.403935-0.801055-0.488307-0.893085` |
 
-## 2. Outputs received
+## 2. The outputs I received
 
 | Function | Week 1 output | Best so far |
 |---|---|---|
@@ -36,7 +36,7 @@ Week 1 was a baseline, so these are simply the best points from the starting dat
 
 ## 3. What went wrong in my first attempt
 
-My first try at Week 2 gave bad answers, and I threw it away. I am keeping a short record here, because checking the output is as important as the result.
+My first try at Week 2 gave bad answers, and I threw it away. I keep a short record here, because checking the output is as important as the result.
 
 1. **Three answers were just random numbers.** F2, F3 and F6 all started with `0.374540-0.950714`. Those are the first numbers numpy gives with seed 42. The optimiser found a flat surface, did not move, and gave back its own starting point.
 2. **The model had collapsed.** On those functions the length scale sat at its lowest limit (1e-05), so the model learned nothing.
@@ -44,7 +44,7 @@ My first try at Week 2 gave bad answers, and I threw it away. I am keeping a sho
 4. **Some length scales were far too big.** For F2 the model decided x2 did not matter at all, with a length scale of 100. On inputs between 0 and 1 that makes no sense. I set the upper limit to 3.0.
 5. **I used one output transform for all eight functions.** I tested raw and rank outputs properly for each function and they split four and four.
 
-## 4. Method used for Week 2
+## 4. How I chose the Week 2 inputs
 
 I fitted a Gaussian Process for each function on the starting data plus the Week 1 result. The kernel is ARD Matern 2.5 (one length scale per input), with length scales bounded to 0.05 to 3.0 and a white noise term. I chose raw or rank outputs for each function by leave one out Spearman. I used Spearman and not R2 to compare, because a transform that squashes the outputs makes R2 look better than it is. I found the Expected Improvement point with a wide random screen followed by local polishing. I also found a pure exploit point (highest predicted mean) as a second, separate check.
 
@@ -61,11 +61,11 @@ I fitted a Gaussian Process for each function on the starting data plus the Week
 
 F5 has a high R2 but only 0.57 Spearman. One very large value controls most of the spread, so the Spearman figure is the honest one.
 
-## 5. Week 2 inputs
+## 5. My Week 2 inputs
 
 The gap column is the distance between the EI point and the exploit point. A small gap means two separate methods picked nearly the same place.
 
-| Function | Dim | Input submitted | Gap | Confidence |
+| Function | Dim | My input | Gap | Confidence |
 |---|---|---|---|---|
 | F1 | 2 | `0.747350-0.757252` | 0.02 | Low (probe) |
 | F2 | 2 | `0.718372-0.000000` | 0.81 | Low (probe) |
@@ -76,7 +76,7 @@ The gap column is the distance between the EI point and the exploit point. A sma
 | F7 | 6 | `0.000000-0.117995-0.800238-0.320528-0.316723-0.893535` | 0.26 | Moderate |
 | F8 | 8 | `0.105641-0.000000-0.134347-0.000000-0.999999-0.471787-0.151664-0.399205` | 0.036 | High |
 
-### Reasoning for each function
+### Why I chose each input
 
 **F1 (low).** The model has no real skill here. The one large value in the data is negative (-3.6e-03 at 0.650-0.682), and the best positive value is almost zero, which looks like a point where the sign changes. I take a small step past the best point, away from the negative one, hoping to reach a positive region.
 
@@ -94,16 +94,16 @@ The gap column is the distance between the EI point and the exploit point. A sma
 
 **F8 (high).** One of the two strongest models. EI and exploit agree to within 0.036.
 
-## 6. Honest limits
+## 6. What I am not sure about
 
 This is the first real model based week. The models for F1 and F2 have little skill, so those two are probes that buy information rather than score. I expect the best chance of a gain on F4, F5, F6 and F8.
 
-## 7. Next steps
+## 7. My next steps
 
-1. Fill in the outputs table when the portal replies.
-2. Check if F8, the strongest model, improved. A miss there would teach me the most.
-3. Check if F1 gave anything above 1e-16.
-4. Keep one file per week (Week_3_Progress.md next) with the same sections.
+1. I will record the outputs in section 8 when the portal replies.
+2. I will check if F8, my strongest model, improved. A miss there would teach me the most.
+3. I will check if F1 gave anything above 1e-16.
+4. I will keep one file per week (Week_3_Progress.md next) with the same sections.
 
 ## 8. Week 2 outputs
 
