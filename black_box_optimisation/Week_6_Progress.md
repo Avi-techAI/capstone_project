@@ -1,4 +1,4 @@
-# Black Box Capstone: Week 6 Progress
+# Black Box Capstone: Week 6 Progress.
 
 **Cohort:** IMP-PCMLAI-26-06 | **Student:** Avi Thakur
 **Course:** Imperial College London Professional Certificate in ML and AI
