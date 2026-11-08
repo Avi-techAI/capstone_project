@@ -26,17 +26,17 @@ There are eight unknown functions, from 2 to 8 inputs each. Every input is a num
 4. I produce several candidate points: the Expected Improvement point, the point with the highest predicted value, and the same two inside a small box around the best point so far.
 5. I choose the final input by judgement. I compare the candidates with the real trend from earlier weeks, and decide each week whether the function needs exploration (a new area) or exploitation (a small step near the best).
 
-## Best result so far (after Week 4)
+## Best result so far (after Week 5)
 
 | Function | Best output | Week found |
 |---|---|---|
 | F1 | 5.66e-06 | 4 |
 | F2 | 0.6965 | 1 |
-| F3 | -0.0166 | 2 |
-| F4 | 0.5540 | 3 |
-| F5 | 4443.11 | 3 |
+| F3 | -0.0165 | 5 |
+| F4 | 0.6473 | 5 |
+| F5 | 4473.75 | 5 |
 | F6 | -0.4142 | 4 |
-| F7 | 2.0818 | 4 |
+| F7 | 2.1092 | 5 |
 | F8 | 9.9453 | 4 |
 
 ![Best output so far for each function](figures/01_convergence.png)
@@ -50,6 +50,7 @@ Each week has its own file with the inputs, the outputs, what I learned and the 
 * [Week 3](Week_3_Progress.md)
 * [Week 4](Week_4_Progress.md)
 * [Week 5](Week_5_Progress.md)
+* [Week 6](Week_6_Progress.md)
 
 ## Files in this repository
 
