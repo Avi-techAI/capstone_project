@@ -2,11 +2,11 @@
 
 **Cohort:** IMP-PCMLAI-26-06 | **Student:** Avi Thakur
 **Course:** Imperial College London Professional Certificate in ML and AI
-**Status of this file:** Week 5 inputs are proposed only. They have not been submitted yet. Fill in the outputs table after the portal replies.
+**Status:** I submitted my Week 5 inputs and recorded the outputs in section 8. My Week 6 plan is in Week_6_Progress.md.
 
 ---
 
-## 1. What was submitted so far
+## 1. What I submitted so far
 
 | Function | Dim | Week 1 input | Week 2 input | Week 3 input | Week 4 input |
 |---|---|---|---|---|---|
@@ -19,7 +19,7 @@
 | F7 | 6 | `0.057896-0.491672-0.247422-0.218118-0.420428-0.730970` | `0.000000-0.117995-0.800238-0.320528-0.316723-0.893535` | `0.000000-0.060000-0.860000-0.360000-0.280000-0.950000` | `0.000000-0.200000-0.720000-0.310000-0.330000-0.810000` |
 | F8 | 8 | `0.056447-0.065956-0.022929-0.038786-0.403935-0.801055-0.488307-0.893085` | `0.105641-0.000000-0.134347-0.000000-0.999999-0.471787-0.151664-0.399205` | `0.125000-0.060000-0.160000-0.000000-0.999999-0.490000-0.200000-0.470000` | `0.126000-0.080000-0.166000-0.000000-0.999999-0.503000-0.228000-0.532000` |
 
-## 2. Outputs received
+## 2. The outputs I received
 
 | Function | Week 1 | Week 2 | Week 3 | Week 4 | Best so far | Week 4 result |
 |---|---|---|---|---|---|---|
@@ -34,7 +34,7 @@
 
 Four of eight functions set a new best in Week 4 (F1, F6, F7, F8). F5 matched its best. F2, F3 and F4 did not improve.
 
-## 3. What the data shows for each function
+## 3. What I learned about each function
 
 **F1.** The log curve from last week worked well. It predicted about 1e-6 at the Week 4 point and the real value was 5.7e-6. All four points on the line (Week 2, Week 1, Week 3, Week 4) now sit almost exactly on one curve in log scale. That curve has its top about one more step along the same line, near 0.674-0.648, where it predicts about 4e-4.
 
@@ -52,9 +52,9 @@ Four of eight functions set a new best in Week 4 (F1, F6, F7, F8). F5 matched it
 
 **F8.** Another very small gain (9.944 to 9.945). The local exploit point now predicts no gain at all (9.945 plus or minus 0.015). The safe gains near this point are used up.
 
-## 4. Method used for Week 5
+## 4. How I chose the Week 5 inputs
 
-Same Gaussian Process setup as Week 4 (ARD Matern 2.5 kernel, length scales bounded to 0.05 to 3.0, white noise term, Expected Improvement). Each model was refitted on the initial data plus all four weeks of results, with repeated points kept as separate rows. The output transform (raw or rank) was chosen again for each function by leave one out Spearman. I produced four candidates for each function: the EI point, a pure exploit point, an EI point inside a box of plus or minus 0.1 around the best input, and an exploit point inside that box. For F6 and F7 I also compared the raw and rank models, to see whether the two transforms give the same advice. For F1 I refitted the curve on the log output along the line through all four F1 points.
+I used the same Gaussian Process setup as Week 4 (ARD Matern 2.5 kernel, length scales bounded to 0.05 to 3.0, white noise term, Expected Improvement). I refitted each model on the initial data plus all four weeks of results, with repeated points kept as separate rows. I chose the output transform (raw or rank) again for each function by leave one out Spearman. I produced four candidates for each function: the EI point, a pure exploit point, an EI point inside a box of plus or minus 0.1 around the best input, and an exploit point inside that box. For F6 and F7 I also compared the raw and rank models, to see whether the two transforms give the same advice. For F1 I refitted the curve on the log output along the line through all four F1 points.
 
 This week I also asked a new question for each function: is a fifth point near the best still the most useful thing to learn? For three functions (F2, F3, F5) the answer was no, so I used a controlled test of one input, or a jump to an unexplored area. For F8 I took the exploration step that I set aside last week.
 
@@ -69,13 +69,13 @@ This week I also asked a new question for each function: is a fifth point near t
 | F7 | rank | 0.49 | 0.68 | Moderate |
 | F8 | raw | 0.98 | 0.99 | High |
 
-The model skill chart in `figures/` comes from `visualise_progress.py`, which uses a slightly different rank transform, so its scores can differ from this table by a few hundredths.
+The model skill chart in `figures/` comes from `visualise_progress.py`, which uses a slightly different rank transform and fixed transform choices, so its scores can differ from this table. The gap is small for the strong models (F4, F5, F8) and can reach about 0.2 for the weak ones such as F1.
 
 *For F5 the rank model wins on Spearman by a small margin (0.67 against 0.64), but the raw model has far better R2 (0.95 against 0.43) and matches the real results, so I used the raw model.
 
-## 5. Week 5 proposed inputs
+## 5. My Week 5 inputs
 
-| Function | Dim | Input to submit | Style | Confidence |
+| Function | Dim | My input | Style | Confidence |
 |---|---|---|---|---|
 | F1 | 2 | `0.680000-0.657000` | Exploit along trend | Moderate |
 | F2 | 2 | `0.985000-0.985000` | Explore | Low |
@@ -88,7 +88,7 @@ The model skill chart in `figures/` comes from `visualise_progress.py`, which us
 
 Four functions exploit (F1, F4, F6, F7) and four explore (F2, F3, F5, F8).
 
-### Reasoning for each function
+### Why I chose each input
 
 **F1 (moderate, exploit).** The log curve through the four F1 points predicts about 3e-4 at 0.680-0.657, which is about one more step along the same line and would be more than 50 times the current best. I stop a little short of the curve's top (0.674-0.648), because the negative point at 0.650-0.682 is now only about 0.04 away and I still do not know what causes it. If the output rises again, the source is close and I will search around it. If it falls, the top is most likely between the Week 4 point and this one.
 
@@ -106,29 +106,29 @@ Four functions exploit (F1, F4, F6, F7) and four explore (F2, F3, F5, F8).
 
 **F8 (moderate, explore).** Last week I said I would explore F8 once the safe gains ran out, and they now have. The F8 model is the strongest of the eight (Spearman 0.99), so its EI point is worth trusting. It sits about 0.51 away from the best, moves x6 up to 0.79 and x8 down to 0.21, and predicts 9.85 plus or minus 0.17. That range includes values above the current best. The best of 9.945 stays safe whatever this point returns.
 
-## 6. Honest limits
+## 6. What I am not sure about
 
 F2 and F3 are noisy, so one output can look better or worse than it really is. The F1 choice rests on a curve through four points on one line, so it says nothing about how the output changes across the line. The F4 model cannot see the narrow top, so its predictions near the best are too low and too smooth. For F6 the raw and rank models disagree, and I chose the raw model because the last two real results support it. The four exploration points (F2, F3, F5, F8) may all return lower values than the current best. That is expected, because their purpose is to learn about the function, and the best value for each is already safe.
 
-## 7. Next steps
+## 7. My next steps
 
-1. Submit these inputs through the portal and fill in the outputs table below.
-2. Add the Week 5 outputs to `submissions.json` and refit all eight models.
-3. For F1, if the output rises again, test a point across the line as well as along it, to find the true centre of the source.
-4. For F2, if the corner is good, search around it. If it is poor, go back to x1 near 0.70 and average two nearby points to reduce the effect of noise.
-5. For F3 and F5, use the one input test to decide whether to drop x1 from the search.
-6. For F4, fit a curve through the Week 3, Week 4 and Week 5 points to place the narrow top.
-7. For F8, if the EI point does well, search around it. If not, go back to small exploit steps.
+1. I will submit these inputs through the portal and record the outputs in section 8.
+2. I will add the Week 5 outputs to `submissions.json` and refit all eight models.
+3. For F1, if the output rises again, I will test a point across the line as well as along it, to find the true centre of the source.
+4. For F2, if the corner is good, I will search around it. If it is poor, I will go back to x1 near 0.70 and average two nearby points to reduce the effect of noise.
+5. For F3 and F5, I will use the one input test to decide whether to drop x1 from the search.
+6. For F4, I will fit a curve through the Week 3, Week 4 and Week 5 points to place the narrow top.
+7. For F8, if the EI point does well, I will search around it. If not, I will go back to small exploit steps.
 
-## 8. Week 5 outputs (fill in after the portal replies)
+## 8. Week 5 outputs
 
 | Function | Output received | Better than best so far? | New best |
 |---|---|---|---|
-| F1 | | | |
-| F2 | | | |
-| F3 | | | |
-| F4 | | | |
-| F5 | | | |
-| F6 | | | |
-| F7 | | | |
-| F8 | | | |
+| F1 | -1.55e-03 | No, negative | 5.66e-06 (W4) |
+| F2 | -0.0028 | No, explore point | 0.6965 (W1) |
+| F3 | -0.0165 | Yes, very small gain | -0.0165 (W5) |
+| F4 | 0.6473 | Yes, up about 17% | 0.6473 (W5) |
+| F5 | 4473.75 | Yes, up about 0.7% | 4473.75 (W5) |
+| F6 | -0.4396 | No | -0.4142 (W4) |
+| F7 | 2.1092 | Yes, small gain | 2.1092 (W5) |
+| F8 | 9.8546 | No, explore point | 9.9453 (W4) |
