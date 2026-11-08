@@ -1,6 +1,6 @@
 # Black Box Capstone: Week 4 Progress
 
-**Cohort:** IMP-PCMLAI-26-06 | **Student:** Avi Thakur
+**Cohort:** IMP-PCMLAI-26-06 | **Student:** Avdhesh Thakur
 **Course:** Imperial College London Professional Certificate in ML and AI
 **Status:** I submitted my Week 4 inputs and recorded the outputs in section 8. My Week 5 plan is in Week_5_Progress.md.
 
