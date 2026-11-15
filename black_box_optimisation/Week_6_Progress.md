@@ -1,8 +1,8 @@
-# Black Box Capstone: Week 6 Progress.
+# Black Box Capstone: Week 6 Progress
 
-**Cohort:** IMP-PCMLAI-26-06 | **Student:** Avdhesh Thakur
+**Cohort:** IMP-PCMLAI-26-06 | **Student:** Avi Thakur
 **Course:** Imperial College London Professional Certificate in ML and AI
-**Status:** I have chosen my Week 6 inputs but I have not submitted them yet. I will record the outputs in section 8 when the portal replies.
+**Status:** I submitted my Week 6 inputs and recorded the outputs in section 8. My Week 7 plan is in Week_7_Progress.md.
 
 ---
 
@@ -126,11 +126,11 @@ F2 and F3 are noisy, so one output can look better or worse than it really is. T
 
 | Function | Output received | Better than best so far? | New best |
 |---|---|---|---|
-| F1 | | | |
-| F2 | | | |
-| F3 | | | |
-| F4 | | | |
-| F5 | | | |
-| F6 | | | |
-| F7 | | | |
-| F8 | | | |
+| F1 | -7.21e-03 | No, negative | 5.66e-06 (W4) |
+| F2 | 0.6517 | No, third reading of the best point | 0.6965 (W1) |
+| F3 | -0.0313 | No | -0.0165 (W5) |
+| F4 | 0.6716 | Yes, up about 3.7% | 0.6716 (W6) |
+| F5 | 4678.30 | Yes, up about 4.6% | 4678.30 (W6) |
+| F6 | -0.4388 | No, inside the noise | -0.4142 (W4) |
+| F7 | 2.1315 | Yes, up about 1.1% | 2.1315 (W6) |
+| F8 | 9.9445 | No, 0.0008 below the best | 9.9453 (W4) |

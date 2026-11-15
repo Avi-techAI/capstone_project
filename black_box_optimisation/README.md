@@ -21,22 +21,22 @@ There are eight unknown functions, from 2 to 8 inputs each. Every input is a num
 ## My method
 
 1. For each function I fit a Gaussian Process model on the starting data plus every weekly result so far.
-2. The model uses a Matern 2.5 kernel with a separate length scale for each input, so it shows which inputs matter most. A noise term handles functions that give different outputs for the same input.
-3. For each function I test two versions of the output, the raw values and their ranks. I usually keep the one that predicts better in leave one out testing, and I say so in the weekly notes when I make an exception.
+2. The model uses a Matern kernel with a separate length scale for each input, so it shows which inputs matter most. A noise term handles functions that give different outputs for the same input.
+3. For each function I test two versions of the output (the raw values and their ranks) and, from Week 7, two kernels (Matern 2.5, which assumes a smooth surface, and Matern 1.5, which allows sharper bends). I usually keep the combination that predicts best in leave one out testing, and I say so in the weekly notes when I make an exception. Matern 1.5 scored equal or better on all eight functions in Week 7, and it is the first model that fits the narrow top of F4.
 4. I produce several candidate points: the Expected Improvement point, the point with the highest predicted value, and the same two inside a small box around the best point so far.
 5. I choose the final input by judgement. I compare the candidates with the real trend from earlier weeks, and decide each week whether the function needs exploration (a new area) or exploitation (a small step near the best).
 
-## Best result so far (after Week 5)
+## Best result so far (after Week 6)
 
 | Function | Best output | Week found |
 |---|---|---|
 | F1 | 5.66e-06 | 4 |
 | F2 | 0.6965 | 1 |
 | F3 | -0.0165 | 5 |
-| F4 | 0.6473 | 5 |
-| F5 | 4473.75 | 5 |
+| F4 | 0.6716 | 6 |
+| F5 | 4678.30 | 6 |
 | F6 | -0.4142 | 4 |
-| F7 | 2.1092 | 5 |
+| F7 | 2.1315 | 6 |
 | F8 | 9.9453 | 4 |
 
 ![Best output so far for each function](figures/01_convergence.png)
@@ -51,6 +51,7 @@ Each week has its own file with the inputs, the outputs, what I learned and the 
 * [Week 4](Week_4_Progress.md)
 * [Week 5](Week_5_Progress.md)
 * [Week 6](Week_6_Progress.md)
+* [Week 7](Week_7_Progress.md)
 
 ## Files in this repository
 

@@ -1,0 +1,14 @@
+# Black Box Capstone Project - Python dependencies
+# Cohort IMP-PCMLAI-26-06 | Avi Thakur
+#
+# Install with:
+#     pip install -r requirements.txt
+#
+# Note: if you use Anaconda, all four are already included in the base
+# environment. Make sure your editor is pointing at that interpreter
+# (VS Code: Cmd+Shift+P -> "Python: Select Interpreter" -> choose "base").
+
+numpy>=1.22
+scipy>=1.10
+scikit-learn>=1.3
+matplotlib>=3.7
