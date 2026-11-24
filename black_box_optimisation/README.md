@@ -66,15 +66,12 @@ Each week has its own file with the inputs, the outputs, what I learned and the 
 |---|---|
 | `submissions.json` | Every weekly input and output, and the reason for each choice |
 | `visualise_progress.py` | Fits the models and draws every chart in `figures/` |
-| `model_benchmark.py` | Scores ten kinds of model on every function |
-| `committee_bo.py` | Runs several models and several acquisition functions together |
 | `figures/` | Progress charts, model quality and input sensitivity |
 | `initial_data/` | The starting data given by the course |
-| `requirements.txt` | Python packages needed to run the script |
 
 To redraw the charts, run:
 
 ```
-pip install -r requirements.txt
+pip install numpy scipy scikit-learn matplotlib
 python visualise_progress.py
 ```
