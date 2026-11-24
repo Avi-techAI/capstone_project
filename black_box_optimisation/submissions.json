@@ -4,77 +4,701 @@
   "total_weeks": 13,
   "notes": "Single source of truth for all weekly submissions. Add each week's input and output here, then re-run visualise_progress.py to regenerate every figure.",
   "functions": {
-    "F1": {"dim": 2, "weeks": {
-      "1": {"input": [0.731024, 0.733000], "output": 7.709397204501192e-16, "basis": "best point from initial data"},
-      "2": {"input": [0.747350, 0.757252], "output": 1.6158081847921652e-23, "basis": "EI on improved model (LOO R2 -0.07 but Spearman 0.55). Moves in the same direction as the manual sign-change reading, and agrees with pure-exploit (0.736,0.738). Smaller, safer step than the earlier manual probe."},
-      "3": {"input": [0.715000, 0.709000], "output": 3.843061229702468e-10, "basis": "See Week_3_Progress.md."},
-      "4": {"input": [0.697000, 0.682000], "output": 5.6565292970445165e-06, "basis": "Exploit along the log curve through Weeks 2, 1 and 3, stopping short of the negative point."},
-      "5": {"input": [0.680000, 0.657000], "output": -0.0015525838323466681, "basis": "Exploit along the log curve through all four F1 points, about one more step, predicted about 3e-4."},
-      "6": {"input": [0.421000, 0.464000], "output": -0.007205629781049314, "basis": "Explore: the point farthest from every F1 point tried so far (about 0.32 from the nearest), to search for a second, stronger source."},
-      "7": {"input": [0.693500, 0.676700], "output": null, "basis": "Exploit: short step of 0.006 along the line from the Week 4 best, using the curve that can change sign (predicted about 1.4e-5)."}
-    }},
-    "F2": {"dim": 2, "weeks": {
-      "1": {"input": [0.702637, 0.926564], "output": 0.6965076134420598, "basis": "best point from initial data"},
-      "2": {"input": [0.718372, 0.000000], "output": 0.5388493073990304, "basis": "EI on raw-standardised outputs (CV-selected). Both methods agree x1 ~0.70-0.72; they still disagree on x2 (gap 0.81), which signals x2 carries little influence. Weakest model after F1."},
-      "3": {"input": [0.698000, 0.990000], "output": 0.5961087609466735, "basis": "See Week_3_Progress.md."},
-      "4": {"input": [0.705000, 0.560000], "output": 0.5260547755120459, "basis": "Explore along the ridge: x1 0.705, x2 in the middle at 0.56."},
-      "5": {"input": [0.985000, 0.985000], "output": -0.0028095616240969854, "basis": "Explore: EI and UCB both pick the untested corner. x2 hardly matters near x1 0.70 and noise hides small gains there."},
-      "6": {"input": [0.702637, 0.926564], "output": 0.6516505738038327, "basis": "Repeat the best point to get a third reading and estimate the noise."},
-      "7": {"input": [0.240000, 0.926564], "output": null, "basis": "Explore one input: x1 at 0.24, the middle of the largest gap in x1, with x2 kept at the best point."}
-    }},
-    "F3": {"dim": 3, "weeks": {
-      "1": {"input": [0.492581, 0.611593, 0.340176], "output": -0.03340766606098994, "basis": "best point from initial data"},
-      "2": {"input": [0.614976, 0.699593, 0.383667], "output": -0.016605463076023043, "basis": "EI, LOO R2 0.50. Reasonably close to pure-exploit answer."},
-      "3": {"input": [0.660000, 0.730000, 0.400000], "output": -0.03761291565693203, "basis": "See Week_3_Progress.md."},
-      "4": {"input": [0.560000, 0.660000, 0.372000], "output": -0.020594862512314165, "basis": "Half step back from the Week 2 best towards the exploit point."},
-      "5": {"input": [0.850000, 0.700000, 0.384000], "output": -0.016499755000723426, "basis": "Explore one input: keep x2 and x3 at the Week 2 best and move x1 to test whether it matters."},
-      "6": {"input": [0.850000, 0.700000, 0.376000], "output": -0.031344424988394085, "basis": "Explore one input: x3 down from 0.384 to 0.376 with x1 and x2 kept, since x1 does not matter."},
-      "7": {"input": [0.850000, 0.715000, 0.386250], "output": null, "basis": "Test: small step along a sloped ridge in x2 and x3 (slope 0.15, the slope best supported by leave one out testing)."}
-    }},
-    "F4": {"dim": 4, "weeks": {
-      "1": {"input": [0.577766, 0.428772, 0.425826, 0.249007], "output": -4.02555701687789, "basis": "best point from initial data"},
-      "2": {"input": [0.440364, 0.425179, 0.378308, 0.397055], "output": 0.26262308789443667, "basis": "EI on raw-standardised outputs (CV-selected, Spearman 0.975 vs 0.902 for rank). Predicted mean 2.06 > best 1.75, sigma only 0.10. EI and pure-exploit agree to 0.0001, the tightest agreement of all eight. Sensitivity curves also show all four dims peaking together near 0.43."},
-      "3": {"input": [0.410500, 0.417300, 0.352000, 0.434500], "output": 0.5540052945268212, "basis": "See Week_3_Progress.md."},
-      "4": {"input": [0.406800, 0.414700, 0.344200, 0.438700], "output": 0.38369936231290724, "basis": "Pure exploit point, 0.01 from Week 3."},
-      "5": {"input": [0.414200, 0.419900, 0.359800, 0.430300], "output": 0.6473420067645894, "basis": "Exploit: mirror of the Week 4 step around the Week 3 best, to place the narrow top along that line."},
-      "6": {"input": [0.416800, 0.421700, 0.365300, 0.427400], "output": 0.6715577782791837, "basis": "Exploit: 1.7 steps along the Week 4, 3, 5 line, at the top of a curve through those three points (predicted 0.667)."},
-      "7": {"input": [0.413800, 0.421900, 0.368100, 0.430100], "output": null, "basis": "Test a second direction: step of 0.005 across the line, in the direction the GP says rises most."}
-    }},
-    "F5": {"dim": 4, "weeks": {
-      "1": {"input": [0.224189, 0.846480, 0.879484, 0.878516], "output": 1088.8581918803375, "basis": "best point from initial data"},
-      "2": {"input": [0.203449, 0.958957, 0.999999, 0.960107], "output": 3452.9224138377267, "basis": "OVERRIDE NO LONGER NEEDED. The earlier rank transform predicted F5 poorly and pushed EI to a corner with x1=0, abandoning the region that produced 1088.86. Raw-standardised outputs predict far better (Spearman 0.566 vs 0.475), because rank discards the fact that the best point is an order of magnitude above the rest. Under the better model EI stays at x1~0.20, close to the known good region, and agrees with pure-exploit to 0.005. Predicted mean 3.57 > best 2.86."},
-      "3": {"input": [0.150000, 0.999999, 0.999999, 0.999999], "output": 4443.1070487147545, "basis": "See Week_3_Progress.md."},
-      "4": {"input": [0.080000, 0.999999, 0.999999, 0.999999], "output": 4440.8118590482745, "basis": "Exploit along trend, x1 down to 0.08 with others on the edge."},
-      "5": {"input": [0.300000, 0.999999, 0.999999, 0.999999], "output": 4473.745293127752, "basis": "Explore one input: x1 to 0.30 at the corner, since x1 0.08 and 0.15 gave the same output."},
-      "6": {"input": [0.500000, 0.999999, 0.999999, 0.999999], "output": 4678.299790120855, "basis": "Exploit along trend: x1 up to 0.50 at the corner, since x1 0.30 beat 0.15."},
-      "7": {"input": [0.750000, 0.999999, 0.999999, 0.999999], "output": null, "basis": "Exploit along trend: x1 up to 0.75 at the corner, since x1 0.50 beat 0.30 by 4.6%."}
-    }},
-    "F6": {"dim": 5, "weeks": {
-      "1": {"input": [0.728186, 0.154693, 0.732552, 0.693997, 0.056401], "output": -0.6991656868796836, "basis": "best point from initial data"},
-      "2": {"input": [0.447694, 0.000000, 0.909797, 0.999999, 0.000000], "output": -1.0053191555005316, "basis": "EI, LOO R2 0.73, predicted mean 2.65 > current best 1.98. Genuine predicted gain, not just uncertainty chasing."},
-      "3": {"input": [0.650000, 0.230000, 0.650000, 0.770000, 0.030000], "output": -0.42419604452352777, "basis": "See Week_3_Progress.md."},
-      "4": {"input": [0.585000, 0.315000, 0.565000, 0.830000, 0.000000], "output": -0.41417099616718206, "basis": "Just short of the exploit point, same direction as Week 3."},
-      "5": {"input": [0.622000, 0.282000, 0.609000, 0.817000, 0.000000], "output": -0.4396024171701353, "basis": "Exploit: raw model best, between the Week 3 and Week 4 points, which gave almost the same value."},
-      "6": {"input": [0.549000, 0.272000, 0.517000, 0.785000, 0.047000], "output": -0.43882187719662596, "basis": "Exploit: midpoint of the raw and rank model best points, which agree within about 0.03."},
-      "7": {"input": [0.590000, 0.290000, 0.651000, 0.734000, 0.000000], "output": null, "basis": "Exploit with a medium step: Matern 1.5 model best inside a 0.1 box, mainly x4 down to 0.734 and x3 up to 0.651 (predicted -0.379)."}
-    }},
-    "F7": {"dim": 6, "weeks": {
-      "1": {"input": [0.057896, 0.491672, 0.247422, 0.218118, 0.420428, 0.730970], "output": 1.3649700705707235, "basis": "best point from initial data"},
-      "2": {"input": [0.000000, 0.117995, 0.800238, 0.320528, 0.316723, 0.893535], "output": 1.5280610395790293, "basis": "EI, LOO R2 improved 0.43 -> 0.64 under tightened bounds."},
-      "3": {"input": [0.000000, 0.060000, 0.860000, 0.360000, 0.280000, 0.950000], "output": 1.061025035626714, "basis": "See Week_3_Progress.md."},
-      "4": {"input": [0.000000, 0.200000, 0.720000, 0.310000, 0.330000, 0.810000], "output": 2.081815768046747, "basis": "Step back from Week 3 towards the Week 2 best, as all candidates agreed."},
-      "5": {"input": [0.000000, 0.220000, 0.700000, 0.275000, 0.355000, 0.800000], "output": 2.109239789355086, "basis": "Exploit: raw and rank local optima agree within 0.05, small step from the Week 4 best."},
-      "6": {"input": [0.000000, 0.200000, 0.680000, 0.248000, 0.355000, 0.802000], "output": 2.131500558071008, "basis": "Exploit: small step from the Week 5 best, mainly x4 down to 0.248 as both models agree."},
-      "7": {"input": [0.000000, 0.170000, 0.640000, 0.200000, 0.355000, 0.806000], "output": null, "basis": "Exploit: small step from the Week 6 best, mainly x4 down to 0.20 and x2 down to 0.17, as both models agree."}
-    }},
-    "F8": {"dim": 8, "weeks": {
-      "1": {"input": [0.056447, 0.065956, 0.022929, 0.038786, 0.403935, 0.801055, 0.488307, 0.893085], "output": 9.598482138169, "basis": "best point from initial data"},
-      "2": {"input": [0.105641, 0.000000, 0.134347, 0.000000, 0.999999, 0.471787, 0.151664, 0.399205], "output": 9.925379294647, "basis": "EI on raw-standardised outputs (CV-selected, Spearman 0.983 vs 0.973). Strongest model of the eight. Predicted mean 2.29 > best 1.78, and pure-exploit lands within 0.036, so two independent methods agree."},
-      "3": {"input": [0.125000, 0.060000, 0.160000, 0.000000, 0.999999, 0.490000, 0.200000, 0.470000], "output": 9.9436601999995, "basis": "See Week_3_Progress.md."},
-      "4": {"input": [0.126000, 0.080000, 0.166000, 0.000000, 0.999999, 0.503000, 0.228000, 0.532000], "output": 9.9453207999995, "basis": "Pure exploit point, about 0.07 from the best."},
-      "5": {"input": [0.015000, 0.181000, 0.113000, 0.219000, 0.998000, 0.790000, 0.251000, 0.207000], "output": 9.8546121, "basis": "Explore: EI point of the strongest model, about 0.51 from the best, since local gains are used up."},
-      "6": {"input": [0.138700, 0.056400, 0.170700, 0.000000, 0.968400, 0.499500, 0.223600, 0.501300], "output": 9.944506571, "basis": "Exploit: model best inside a 0.1 box, since the Week 5 explore point matched the model and found nothing better."},
-      "7": {"input": [0.139900, 0.076100, 0.167900, 0.009900, 0.999999, 0.504000, 0.217800, 0.520900], "output": null, "basis": "Exploit: point inside a 0.05 box where the lowest of three model predictions is highest (all predict about 9.9453)."}
-    }}
+    "F1": {
+      "dim": 2,
+      "weeks": {
+        "1": {
+          "input": [
+            0.731024,
+            0.733
+          ],
+          "output": 7.709397204501192e-16,
+          "basis": "best point from initial data"
+        },
+        "2": {
+          "input": [
+            0.74735,
+            0.757252
+          ],
+          "output": 1.6158081847921652e-23,
+          "basis": "EI on improved model (LOO R2 -0.07 but Spearman 0.55). Moves in the same direction as the manual sign-change reading, and agrees with pure-exploit (0.736,0.738). Smaller, safer step than the earlier manual probe."
+        },
+        "3": {
+          "input": [
+            0.715,
+            0.709
+          ],
+          "output": 3.843061229702468e-10,
+          "basis": "See Week_3_Progress.md."
+        },
+        "4": {
+          "input": [
+            0.697,
+            0.682
+          ],
+          "output": 5.6565292970445165e-06,
+          "basis": "Exploit along the log curve through Weeks 2, 1 and 3, stopping short of the negative point."
+        },
+        "5": {
+          "input": [
+            0.68,
+            0.657
+          ],
+          "output": -0.0015525838323466681,
+          "basis": "Exploit along the log curve through all four F1 points, about one more step, predicted about 3e-4."
+        },
+        "6": {
+          "input": [
+            0.421,
+            0.464
+          ],
+          "output": -0.007205629781049314,
+          "basis": "Explore: the point farthest from every F1 point tried so far (about 0.32 from the nearest), to search for a second, stronger source."
+        },
+        "7": {
+          "input": [
+            0.6935,
+            0.6767
+          ],
+          "output": 1.7037227634082468e-05,
+          "basis": "Exploit: short step of 0.006 along the line from the Week 4 best, using the curve that can change sign (predicted about 1.4e-5)."
+        },
+        "8": {
+          "input": [
+            0.694334,
+            0.677534
+          ],
+          "output": null,
+          "basis": "[analytic local law] Committee overruled. Its pick (x1+x2=1.38681) is provably worse by direct observation: f falls monotonically as x1+x2 rises past 1.3702 (1.704e-05 -> 5.657e-06 -> 3.843e-10). Chosen point lies BETWEEN two observations known to be positive, so it cannot return a negative. Caveat: the fitted law uses 3 parameters on 2 positive points and is inconsistent with the W5 observation, so treat 2.5x as an optimistic ceiling."
+        }
+      }
+    },
+    "F2": {
+      "dim": 2,
+      "weeks": {
+        "1": {
+          "input": [
+            0.702637,
+            0.926564
+          ],
+          "output": 0.6965076134420598,
+          "basis": "best point from initial data"
+        },
+        "2": {
+          "input": [
+            0.718372,
+            0.0
+          ],
+          "output": 0.5388493073990304,
+          "basis": "EI on raw-standardised outputs (CV-selected). Both methods agree x1 ~0.70-0.72; they still disagree on x2 (gap 0.81), which signals x2 carries little influence. Weakest model after F1."
+        },
+        "3": {
+          "input": [
+            0.698,
+            0.99
+          ],
+          "output": 0.5961087609466735,
+          "basis": "See Week_3_Progress.md."
+        },
+        "4": {
+          "input": [
+            0.705,
+            0.56
+          ],
+          "output": 0.5260547755120459,
+          "basis": "Explore along the ridge: x1 0.705, x2 in the middle at 0.56."
+        },
+        "5": {
+          "input": [
+            0.985,
+            0.985
+          ],
+          "output": -0.0028095616240969854,
+          "basis": "Explore: EI and UCB both pick the untested corner. x2 hardly matters near x1 0.70 and noise hides small gains there."
+        },
+        "6": {
+          "input": [
+            0.702637,
+            0.926564
+          ],
+          "output": 0.6516505738038327,
+          "basis": "Repeat the best point to get a third reading and estimate the noise."
+        },
+        "7": {
+          "input": [
+            0.24,
+            0.926564
+          ],
+          "output": -0.008560990615513882,
+          "basis": "Explore one input: x1 at 0.24, the middle of the largest gap in x1, with x2 kept at the best point."
+        },
+        "8": {
+          "input": [
+            0.681927,
+            0.903578
+          ],
+          "output": null,
+          "basis": "[GP+SVR committee] Models have strong PROSPECTIVE skill here (GP-Matern 0.83, RandomForest 0.94, ExtraTrees 1.00), the best of all eight functions, so model output is trustworthy. Built from extrapolation-capable models only. F2 is the noisy function (sd~0.043) so expected return stays low."
+        }
+      }
+    },
+    "F3": {
+      "dim": 3,
+      "weeks": {
+        "1": {
+          "input": [
+            0.492581,
+            0.611593,
+            0.340176
+          ],
+          "output": -0.03340766606098994,
+          "basis": "best point from initial data"
+        },
+        "2": {
+          "input": [
+            0.614976,
+            0.699593,
+            0.383667
+          ],
+          "output": -0.016605463076023043,
+          "basis": "EI, LOO R2 0.50. Reasonably close to pure-exploit answer."
+        },
+        "3": {
+          "input": [
+            0.66,
+            0.73,
+            0.4
+          ],
+          "output": -0.03761291565693203,
+          "basis": "See Week_3_Progress.md."
+        },
+        "4": {
+          "input": [
+            0.56,
+            0.66,
+            0.372
+          ],
+          "output": -0.020594862512314165,
+          "basis": "Half step back from the Week 2 best towards the exploit point."
+        },
+        "5": {
+          "input": [
+            0.85,
+            0.7,
+            0.384
+          ],
+          "output": -0.016499755000723426,
+          "basis": "Explore one input: keep x2 and x3 at the Week 2 best and move x1 to test whether it matters."
+        },
+        "6": {
+          "input": [
+            0.85,
+            0.7,
+            0.376
+          ],
+          "output": -0.031344424988394085,
+          "basis": "Explore one input: x3 down from 0.384 to 0.376 with x1 and x2 kept, since x1 does not matter."
+        },
+        "7": {
+          "input": [
+            0.85,
+            0.715,
+            0.38625
+          ],
+          "output": -0.022097166937530284,
+          "basis": "Test: small step along a sloped ridge in x2 and x3 (slope 0.15, the slope best supported by leave one out testing)."
+        },
+        "8": {
+          "input": [
+            0.85,
+            0.7,
+            0.392
+          ],
+          "output": null,
+          "basis": "[controlled one-variable sweep] Models REJECTED: prospective skill -0.43 to -0.60, i.e. they rank F3 backwards. Using a designed experiment instead. W5 (0.85,0.700,0.384) -> -0.0165 best; W6 (0.85,0.700,0.376) -> -0.0313 so x3 lower is worse; W7 changed x2 as well so it is confounded. This holds x1 and x2 at their best values and tests x3 above the peak, isolating one variable."
+        }
+      }
+    },
+    "F4": {
+      "dim": 4,
+      "weeks": {
+        "1": {
+          "input": [
+            0.577766,
+            0.428772,
+            0.425826,
+            0.249007
+          ],
+          "output": -4.02555701687789,
+          "basis": "best point from initial data"
+        },
+        "2": {
+          "input": [
+            0.440364,
+            0.425179,
+            0.378308,
+            0.397055
+          ],
+          "output": 0.26262308789443667,
+          "basis": "EI on raw-standardised outputs (CV-selected, Spearman 0.975 vs 0.902 for rank). Predicted mean 2.06 > best 1.75, sigma only 0.10. EI and pure-exploit agree to 0.0001, the tightest agreement of all eight. Sensitivity curves also show all four dims peaking together near 0.43."
+        },
+        "3": {
+          "input": [
+            0.4105,
+            0.4173,
+            0.352,
+            0.4345
+          ],
+          "output": 0.5540052945268212,
+          "basis": "See Week_3_Progress.md."
+        },
+        "4": {
+          "input": [
+            0.4068,
+            0.4147,
+            0.3442,
+            0.4387
+          ],
+          "output": 0.38369936231290724,
+          "basis": "Pure exploit point, 0.01 from Week 3."
+        },
+        "5": {
+          "input": [
+            0.4142,
+            0.4199,
+            0.3598,
+            0.4303
+          ],
+          "output": 0.6473420067645894,
+          "basis": "Exploit: mirror of the Week 4 step around the Week 3 best, to place the narrow top along that line."
+        },
+        "6": {
+          "input": [
+            0.4168,
+            0.4217,
+            0.3653,
+            0.4274
+          ],
+          "output": 0.6715577782791837,
+          "basis": "Exploit: 1.7 steps along the Week 4, 3, 5 line, at the top of a curve through those three points (predicted 0.667)."
+        },
+        "7": {
+          "input": [
+            0.4138,
+            0.4219,
+            0.3681,
+            0.4301
+          ],
+          "output": 0.6309933525995075,
+          "basis": "Test a second direction: step of 0.005 across the line, in the direction the GP says rises most."
+        },
+        "8": {
+          "input": [
+            0.419463,
+            0.366077,
+            0.362835,
+            0.424274
+          ],
+          "output": null,
+          "basis": "[RandomForest exploitation] RandomForest is the only model with real prospective skill here (0.89, versus GP-Matern -0.66). Its UCB variant was rejected: it proposed x3=0.21, far outside the range any good run has used, which is uncertainty-chasing rather than signal. Using the posterior mean only, which is the part with demonstrated skill. The top-5 runs cluster within 0.01-0.024 per dimension, so this is a deliberate modest step outside a converged cluster."
+        }
+      }
+    },
+    "F5": {
+      "dim": 4,
+      "weeks": {
+        "1": {
+          "input": [
+            0.224189,
+            0.84648,
+            0.879484,
+            0.878516
+          ],
+          "output": 1088.8581918803375,
+          "basis": "best point from initial data"
+        },
+        "2": {
+          "input": [
+            0.203449,
+            0.958957,
+            0.999999,
+            0.960107
+          ],
+          "output": 3452.9224138377267,
+          "basis": "OVERRIDE NO LONGER NEEDED. The earlier rank transform predicted F5 poorly and pushed EI to a corner with x1=0, abandoning the region that produced 1088.86. Raw-standardised outputs predict far better (Spearman 0.566 vs 0.475), because rank discards the fact that the best point is an order of magnitude above the rest. Under the better model EI stays at x1~0.20, close to the known good region, and agrees with pure-exploit to 0.005. Predicted mean 3.57 > best 2.86."
+        },
+        "3": {
+          "input": [
+            0.15,
+            0.999999,
+            0.999999,
+            0.999999
+          ],
+          "output": 4443.1070487147545,
+          "basis": "See Week_3_Progress.md."
+        },
+        "4": {
+          "input": [
+            0.08,
+            0.999999,
+            0.999999,
+            0.999999
+          ],
+          "output": 4440.8118590482745,
+          "basis": "Exploit along trend, x1 down to 0.08 with others on the edge."
+        },
+        "5": {
+          "input": [
+            0.3,
+            0.999999,
+            0.999999,
+            0.999999
+          ],
+          "output": 4473.745293127752,
+          "basis": "Explore one input: x1 to 0.30 at the corner, since x1 0.08 and 0.15 gave the same output."
+        },
+        "6": {
+          "input": [
+            0.5,
+            0.999999,
+            0.999999,
+            0.999999
+          ],
+          "output": 4678.299790120855,
+          "basis": "Exploit along trend: x1 up to 0.50 at the corner, since x1 0.30 beat 0.15."
+        },
+        "7": {
+          "input": [
+            0.75,
+            0.999999,
+            0.999999,
+            0.999999
+          ],
+          "output": 5652.145567807069,
+          "basis": "Exploit along trend: x1 up to 0.75 at the corner, since x1 0.50 beat 0.30 by 4.6%."
+        },
+        "8": {
+          "input": [
+            0.999999,
+            0.999999,
+            0.999999,
+            0.999999
+          ],
+          "output": null,
+          "basis": "[empirical monotone trend] Committee overruled, and the backtest strongly vindicates it: EVERY model scores -0.71 to -0.83 prospectively on F5, meaning they rank it backwards. The empirical sweep is unambiguous (x1 0.08->4441, 0.15->4443, 0.30->4474, 0.50->4678, 0.75->5652, accelerating). Tree models also cannot extrapolate past observed outputs, which is fatal on a rising trend."
+        }
+      }
+    },
+    "F6": {
+      "dim": 5,
+      "weeks": {
+        "1": {
+          "input": [
+            0.728186,
+            0.154693,
+            0.732552,
+            0.693997,
+            0.056401
+          ],
+          "output": -0.6991656868796836,
+          "basis": "best point from initial data"
+        },
+        "2": {
+          "input": [
+            0.447694,
+            0.0,
+            0.909797,
+            0.999999,
+            0.0
+          ],
+          "output": -1.0053191555005316,
+          "basis": "EI, LOO R2 0.73, predicted mean 2.65 > current best 1.98. Genuine predicted gain, not just uncertainty chasing."
+        },
+        "3": {
+          "input": [
+            0.65,
+            0.23,
+            0.65,
+            0.77,
+            0.03
+          ],
+          "output": -0.42419604452352777,
+          "basis": "See Week_3_Progress.md."
+        },
+        "4": {
+          "input": [
+            0.585,
+            0.315,
+            0.565,
+            0.83,
+            0.0
+          ],
+          "output": -0.41417099616718206,
+          "basis": "Just short of the exploit point, same direction as Week 3."
+        },
+        "5": {
+          "input": [
+            0.622,
+            0.282,
+            0.609,
+            0.817,
+            0.0
+          ],
+          "output": -0.4396024171701353,
+          "basis": "Exploit: raw model best, between the Week 3 and Week 4 points, which gave almost the same value."
+        },
+        "6": {
+          "input": [
+            0.549,
+            0.272,
+            0.517,
+            0.785,
+            0.047
+          ],
+          "output": -0.43882187719662596,
+          "basis": "Exploit: midpoint of the raw and rank model best points, which agree within about 0.03."
+        },
+        "7": {
+          "input": [
+            0.59,
+            0.29,
+            0.651,
+            0.734,
+            0.0
+          ],
+          "output": -0.42329244902831886,
+          "basis": "Exploit with a medium step: Matern 1.5 model best inside a 0.1 box, mainly x4 down to 0.734 and x3 up to 0.651 (predicted -0.379)."
+        },
+        "8": {
+          "input": [
+            0.018002,
+            0.003128,
+            0.015123,
+            0.024853,
+            0.043382
+          ],
+          "output": null,
+          "basis": "[maximin space-filling] Models REJECTED: prospective skill -0.37 to -0.77. The explored region is also flat - five weeks span -0.414 to -0.440, roughly 1.7 noise standard deviations - so there is no usable local gradient either. With neither model nor gradient available, honest space-filling is better than pretending. This point is 0.919 from the nearest observation in 5D."
+        }
+      }
+    },
+    "F7": {
+      "dim": 6,
+      "weeks": {
+        "1": {
+          "input": [
+            0.057896,
+            0.491672,
+            0.247422,
+            0.218118,
+            0.420428,
+            0.73097
+          ],
+          "output": 1.3649700705707235,
+          "basis": "best point from initial data"
+        },
+        "2": {
+          "input": [
+            0.0,
+            0.117995,
+            0.800238,
+            0.320528,
+            0.316723,
+            0.893535
+          ],
+          "output": 1.5280610395790293,
+          "basis": "EI, LOO R2 improved 0.43 -> 0.64 under tightened bounds."
+        },
+        "3": {
+          "input": [
+            0.0,
+            0.06,
+            0.86,
+            0.36,
+            0.28,
+            0.95
+          ],
+          "output": 1.061025035626714,
+          "basis": "See Week_3_Progress.md."
+        },
+        "4": {
+          "input": [
+            0.0,
+            0.2,
+            0.72,
+            0.31,
+            0.33,
+            0.81
+          ],
+          "output": 2.081815768046747,
+          "basis": "Step back from Week 3 towards the Week 2 best, as all candidates agreed."
+        },
+        "5": {
+          "input": [
+            0.0,
+            0.22,
+            0.7,
+            0.275,
+            0.355,
+            0.8
+          ],
+          "output": 2.109239789355086,
+          "basis": "Exploit: raw and rank local optima agree within 0.05, small step from the Week 4 best."
+        },
+        "6": {
+          "input": [
+            0.0,
+            0.2,
+            0.68,
+            0.248,
+            0.355,
+            0.802
+          ],
+          "output": 2.131500558071008,
+          "basis": "Exploit: small step from the Week 5 best, mainly x4 down to 0.248 as both models agree."
+        },
+        "7": {
+          "input": [
+            0.0,
+            0.17,
+            0.64,
+            0.2,
+            0.355,
+            0.806
+          ],
+          "output": 2.101041890041754,
+          "basis": "Exploit: small step from the Week 6 best, mainly x4 down to 0.20 and x2 down to 0.17, as both models agree."
+        },
+        "8": {
+          "input": [
+            0.0,
+            0.2,
+            0.68,
+            0.248,
+            0.5,
+            0.802
+          ],
+          "output": null,
+          "basis": "[controlled x5 experiment] Both model-driven picks rejected. RandomForest UCB proposed x3=0.729, a value we have MEASURED as worse (0.72 -> 2.082 against 0.68 -> 2.132), and x5=0.55 when every good run sits near 0.355; its 'agreement 1.000' was an artefact of all acquisitions chasing the same uncertainty. One-variable sweeps show x2, x3, x4 and x6 are already at their individual optima, which are exactly the W6 best, so refining cannot improve. x5 is the least-explored dimension near the optimum (top-5 span 0.038). This holds everything else at the best and tests x5 alone."
+        }
+      }
+    },
+    "F8": {
+      "dim": 8,
+      "weeks": {
+        "1": {
+          "input": [
+            0.056447,
+            0.065956,
+            0.022929,
+            0.038786,
+            0.403935,
+            0.801055,
+            0.488307,
+            0.893085
+          ],
+          "output": 9.598482138169,
+          "basis": "best point from initial data"
+        },
+        "2": {
+          "input": [
+            0.105641,
+            0.0,
+            0.134347,
+            0.0,
+            0.999999,
+            0.471787,
+            0.151664,
+            0.399205
+          ],
+          "output": 9.925379294647,
+          "basis": "EI on raw-standardised outputs (CV-selected, Spearman 0.983 vs 0.973). Strongest model of the eight. Predicted mean 2.29 > best 1.78, and pure-exploit lands within 0.036, so two independent methods agree."
+        },
+        "3": {
+          "input": [
+            0.125,
+            0.06,
+            0.16,
+            0.0,
+            0.999999,
+            0.49,
+            0.2,
+            0.47
+          ],
+          "output": 9.9436601999995,
+          "basis": "See Week_3_Progress.md."
+        },
+        "4": {
+          "input": [
+            0.126,
+            0.08,
+            0.166,
+            0.0,
+            0.999999,
+            0.503,
+            0.228,
+            0.532
+          ],
+          "output": 9.9453207999995,
+          "basis": "Pure exploit point, about 0.07 from the best."
+        },
+        "5": {
+          "input": [
+            0.015,
+            0.181,
+            0.113,
+            0.219,
+            0.998,
+            0.79,
+            0.251,
+            0.207
+          ],
+          "output": 9.8546121,
+          "basis": "Explore: EI point of the strongest model, about 0.51 from the best, since local gains are used up."
+        },
+        "6": {
+          "input": [
+            0.1387,
+            0.0564,
+            0.1707,
+            0.0,
+            0.9684,
+            0.4995,
+            0.2236,
+            0.5013
+          ],
+          "output": 9.944506571,
+          "basis": "Exploit: model best inside a 0.1 box, since the Week 5 explore point matched the model and found nothing better."
+        },
+        "7": {
+          "input": [
+            0.1399,
+            0.0761,
+            0.1679,
+            0.0099,
+            0.999999,
+            0.504,
+            0.2178,
+            0.5209
+          ],
+          "output": 9.9461423689995,
+          "basis": "Exploit: point inside a 0.05 box where the lowest of three model predictions is highest (all predict about 9.9453)."
+        },
+        "8": {
+          "input": [
+            0.120505,
+            0.004041,
+            0.160075,
+            0.0,
+            0.999999,
+            0.533357,
+            0.199373,
+            0.515334
+          ],
+          "output": null,
+          "basis": "[RandomForest exploitation] RandomForest has the usable prospective skill here (0.60, versus Poly2-Ridge which topped the leaky benchmark at 0.997 but is the WORST model prospectively at -0.386 overall). Posterior mean only, for the same reason as F4. Holds x5 at 0.999999, which all four best runs share."
+        }
+      }
+    }
   }
 }

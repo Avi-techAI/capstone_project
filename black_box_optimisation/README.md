@@ -20,24 +20,30 @@ There are eight unknown functions, from 2 to 8 inputs each. Every input is a num
 
 ## My method
 
-1. For each function I fit a Gaussian Process model on the starting data plus every weekly result so far.
-2. The model uses a Matern kernel with a separate length scale for each input, so it shows which inputs matter most. A noise term handles functions that give different outputs for the same input.
-3. For each function I test two versions of the output (the raw values and their ranks) and, from Week 7, two kernels (Matern 2.5, which assumes a smooth surface, and Matern 1.5, which allows sharper bends). I usually keep the combination that predicts best in leave one out testing, and I say so in the weekly notes when I make an exception. Matern 1.5 scored equal or better on all eight functions in Week 7, and it is the first model that fits the narrow top of F4.
-4. I produce several candidate points: the Expected Improvement point, the point with the highest predicted value, and the same two inside a small box around the best point so far.
-5. I choose the final input by judgement. I compare the candidates with the real trend from earlier weeks, and decide each week whether the function needs exploration (a new area) or exploitation (a small step near the best).
+For Weeks 1 to 7 I used one method for all eight functions: a Gaussian Process with a Matern kernel and Expected Improvement. From Week 8 I use a different method for each function, chosen by how well that method is shown to work on that function.
 
-## Best result so far (after Week 6)
+1. For each function I fit models on the starting data plus every weekly result so far.
+2. I test ten kinds of model, not one: three Gaussian Process kernels (Matern, RBF and Rational Quadratic), Random Forest, Extra Trees, Gradient Boosting, Support Vector Regression, nearest neighbours, a neural network and polynomial regression with ridge regularisation.
+3. I score each model the way the real task works. For each week I train only on the starting data and the earlier weeks, then predict that week's point. Leave one out testing is not safe here, because it lets a model see later weeks when it predicts an earlier one, and that makes every score look far better than it is.
+4. For each function I then choose how to decide. Where a model passes that honest test, I use it. Where no model passes, I use a designed experiment that changes one input at a time, or space filling if there is nothing left to refine. Where the raw results show a clear trend, I follow the trend and ignore the models.
+5. I check every candidate against the results I already have, and I reject any point that contradicts something I have measured directly.
 
-| Function | Best output | Week found |
-|---|---|---|
-| F1 | 5.66e-06 | 4 |
-| F2 | 0.6965 | 1 |
-| F3 | -0.0165 | 5 |
-| F4 | 0.6716 | 6 |
-| F5 | 4678.30 | 6 |
-| F6 | -0.4142 | 4 |
-| F7 | 2.1315 | 6 |
-| F8 | 9.9453 | 4 |
+The weekly notes record which method was used for each function and why.
+
+## Best result so far (after Week 7)
+
+| Function | Best output | Week found | From starting data |
+|---|---|---|---|
+| F1 | 1.70e-05 | 7 | 7.71e-16 |
+| F2 | 0.6965 | 1 | 0.6112 |
+| F3 | -0.0165 | 5 | -0.0348 |
+| F4 | 0.6716 | 6 | -4.0255 |
+| F5 | 5652.15 | 7 | 1088.86 |
+| F6 | -0.4142 | 4 | -0.7143 |
+| F7 | 2.1315 | 6 | 1.3650 |
+| F8 | 9.94614 | 7 | 9.5985 |
+
+F5 is now 5.2 times its starting value and F1 has risen by eleven orders of magnitude. F2, F3, F6 and F7 have settled and their remaining gains are small.
 
 ![Best output so far for each function](figures/01_convergence.png)
 
@@ -52,6 +58,7 @@ Each week has its own file with the inputs, the outputs, what I learned and the 
 * [Week 5](Week_5_Progress.md)
 * [Week 6](Week_6_Progress.md)
 * [Week 7](Week_7_Progress.md)
+* [Week 8](Week_8_Progress.md)
 
 ## Files in this repository
 
@@ -59,6 +66,8 @@ Each week has its own file with the inputs, the outputs, what I learned and the 
 |---|---|
 | `submissions.json` | Every weekly input and output, and the reason for each choice |
 | `visualise_progress.py` | Fits the models and draws every chart in `figures/` |
+| `model_benchmark.py` | Scores ten kinds of model on every function |
+| `committee_bo.py` | Runs several models and several acquisition functions together |
 | `figures/` | Progress charts, model quality and input sensitivity |
 | `initial_data/` | The starting data given by the course |
 | `requirements.txt` | Python packages needed to run the script |
